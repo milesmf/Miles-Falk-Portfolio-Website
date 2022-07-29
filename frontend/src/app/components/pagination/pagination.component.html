@@ -1,0 +1,20 @@
+<!-- is-text-align-center -->
+<div class="wrapper columns">
+    <div class="column is-one-third" (click)="toggleActivePage(previousPage)">
+        <p class="has-text-black is-clickable" *ngIf="currentPage > 1">
+            <app-awesome-icon size="1x" [icon]="['fas', 'arrow-left']"></app-awesome-icon>
+            <span class="has-text-weight-medium ml-2">Previous</span>
+        </p>
+    </div>
+
+    <div class="column is-one-third has-text-centered">
+        <p class="has-text-weight-medium">{{currentPage}}/{{totalPages}}</p>
+    </div>
+
+    <div class="column is-one-third has-text-right" (click)="toggleActivePage(nextPage)">
+        <p class="has-text-black is-clickable" *ngIf="currentPage < totalPages">
+            <span class="has-text-weight-medium">Next</span>
+            <app-awesome-icon class="ml-2" size="1x" [icon]="['fas', 'arrow-right']"></app-awesome-icon>
+        </p>
+    </div>
+</div>

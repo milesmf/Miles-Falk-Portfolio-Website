@@ -1,0 +1,185 @@
+//Bulma
+@import '~bulma/css/bulma.css';
+
+//Toastr
+@import '~ngx-toastr/toastr';
+
+//Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400&display=swap');
+
+//Variables
+@import './app/styles/variables.scss';
+
+body {
+    color: #000;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.has-text-primary,
+.has-text-primary {
+
+    &,
+    * {
+        color: $brand-blue  !important;
+    }
+}
+
+.has-text-success {
+
+    &,
+    * {
+        color: #53B547 !important;
+    }
+}
+
+a {
+    color: $brand-blue;
+}
+
+.disableBodyScroll {
+    scrollbar-width: none;
+    /* Firefox */
+
+    &::-webkit-scrollbar {
+        display: none;
+        /* Safari and Chrome */
+    }
+}
+
+* {
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+a:focus,
+a:visited,
+a:active {
+    outline: none;
+}
+
+//
+.is-size {
+
+    &--15 {
+
+        &,
+        * {
+            font-size: 15px !important;
+        }
+    }
+
+    &--14 {
+
+        &,
+        * {
+            font-size: 14px !important;
+        }
+    }
+
+    &--13 {
+
+        &,
+        * {
+            font-size: 13px !important;
+        }
+    }
+
+    &--12 {
+
+        &,
+        * {
+            font-size: 12px !important;
+        }
+    }
+
+    &--11 {
+
+        &,
+        * {
+            font-size: 11px !important;
+        }
+    }
+
+    &--10 {
+
+        &,
+        * {
+            font-size: 10px !important;
+        }
+    }
+}
+
+section {
+    // padding: 10px;
+}
+
+h1 {
+    font-size: 3rem
+}
+
+h2 {
+    font-size: 2.5rem
+}
+
+h3 {
+    font-size: 2rem
+}
+
+h4 {
+    font-size: 1.5rem
+}
+
+h5 {
+    font-size: 1.25rem
+}
+
+h6,
+p {
+    font-size: 1rem;
+}
+
+.modal {
+    z-index: 99;
+}
+
+.modal-card-head {
+    border-top-right-radius: 4px !important;
+    border-top-left-radius: 4px !important;
+}
+
+.modal-card-foot {
+    border-bottom-right-radius: 4px !important;
+    border-bottom-left-radius: 4px !important;
+}
+
+.modal-background {
+    background-color: rgba(0, 0, 0, .35) !important;
+}
+
+.modal-content {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 25px 50px 35px;
+    width: 800px;
+}
+
+.modal-card-head,
+.modal-card-foot {
+    background-color: #fff !important;
+    border: none !important;
+}
+
+//  main,
+// // main * {
+// //     height: 100vh;
+// // }
+
+// BELOW 350px screen size
+// @media (max-width: 350px) {
+//     h5 {
+//         font-size: 1rem;
+//     }
+
+//     h6 {
+//         font-size: 0.75rem;
+//     }
+// }

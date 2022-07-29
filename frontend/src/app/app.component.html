@@ -1,0 +1,150 @@
+<div class="wrapper">
+    <div>
+        <header>
+
+        </header>
+
+        <main>
+            <div class="columns is-mobile is-variable is-8">
+                <div class="column is-one-quarter py-0" style="border-right: 2px solid #eee">
+                    <div class="is-flex is-flex-direction-column is-justify-content-space-between wrapperMenu">
+                        <div class="wrapperMenuHeader">
+                            <div class="mb-4">
+                                <h3>Miles Falk</h3>
+                            </div>
+                            <div class="profile-image">
+                                <img
+                                    src="https://res.cloudinary.com/dyaylz9o7/image/upload/v1658514749/Portfolio%20Website/About/profile_placeholder_netiqq.png">
+                            </div>
+                        </div>
+                        <div class="wrapperMenuLinks">
+                            <nav>
+                                <ul>
+                                    <li [ngClass]="{'active': activeMenuIndex === 3}" [routerLink]="['/', 'about']">
+                                        <a>
+                                            <h5>About Me</h5>
+                                        </a>
+                                    </li>
+                                    <li [ngClass]="{'active': activeMenuIndex === 0}" [routerLink]="['/', 'portfolio']">
+                                        <a>
+                                            <h5>Portfolio</h5>
+                                        </a>
+                                    </li>
+                                    <li [ngClass]="{'active': activeMenuIndex === 2}" [routerLink]="['/', 'code']">
+                                        <a>
+                                            <h5>Code Snippets</h5>
+                                        </a>
+                                    </li>
+                                    <li (click)="downloadResume(true)" class="is-hidden-touch">
+                                        <a>
+                                            <h5>
+                                                <span class="mr-1">Resume</span>
+                                                <app-awesome-icon size="1x" [icon]="['fas', 'file-arrow-down']">
+                                                </app-awesome-icon>
+                                            </h5>
+                                        </a>
+                                    </li>
+                                    <li (click)="downloadResume(false)" class="is-hidden-desktop">
+                                        <a>
+                                            <h5>
+                                                <span class="mr-1">Resume</span>
+                                                <app-awesome-icon size="1x" [icon]="['fas', 'file-arrow-down']">
+                                                </app-awesome-icon>
+                                            </h5>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="wrapperMenuSocials">
+                            <div>
+                                <h6>Contact</h6>
+                            </div>
+                            <div>
+                                <p>
+                                    <a>Github</a>
+                                </p>
+                                <p>
+                                    <a>Linkedin</a>
+                                </p>
+                                <p class="is-flex is-flex-wrap-wrap">
+                                    <span>mfalk527</span>
+                                    <span>@gmail.com</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-three-quarters pt-0 pb-6">
+                    <div class="attention-banner is-flex is-justify-content-space-between is-flex-wrap-wrap">
+                        <div>
+                            <p>
+                                <app-awesome-icon class="has-text-primary" [size]="'1x'"
+                                    [icon]="['fas', 'circle-info']">
+                                </app-awesome-icon>
+                                <span class="ml-2 is-size-8">All source code for this website can be found&nbsp;</span>
+                                <a href="https://github.com/milesmf/Miles-Falk-Portfolio-Website" target="_blank"
+                                    rel="noopener" class="is-underlined">on my GitHub</a>
+                            </p>
+                        </div>
+                        <div>
+                            <p>
+                                <span class="has-text-weight-semibold">BTC</span>
+                                <span>&nbsp;@</span>
+                                <span *ngIf="!!bitcoinToDollar?.price; else showBTCLoading"
+                                    class="has-text-weight-bold">&nbsp;{{bitcoinToDollar?.price | currency : 'USD' :
+                                    'symbol' : '1.0-0'}}</span>
+                                <ng-template #showBTCLoading>
+                                    <span class="ml-2">
+                                        <app-loading-spinner [textOnly]="true"></app-loading-spinner>
+                                    </span>
+                                </ng-template>
+                                <span style="display: inline-block; width: 20px">
+                                    <ng-container>
+                                        <app-awesome-icon *ngIf="bitcoinToDollar?.trend === 1" class="has-text-success"
+                                            [size]="'1x'" [icon]="['fas', 'arrow-up-long']">
+                                        </app-awesome-icon>
+                                        <app-awesome-icon *ngIf="bitcoinToDollar?.trend === -1" class="has-text-danger"
+                                            [size]="'1x'" [icon]="['fas', 'arrow-down-long']">
+                                        </app-awesome-icon>
+                                    </ng-container>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <router-outlet></router-outlet>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+
+        </footer>
+    </div>
+</div>
+
+<!-- <div class="biosWrapper" [ngStyle]="{'visibility': biosLoading ? 'visible' : 'hidden' }">
+    <div>
+        <div class="biosWrapperHeader">
+            <h6>
+                <span>www.milesfalk.com</span>
+                <span>Copyright (C) {{currentYear}}</span>
+            </h6>
+        </div>
+        <div class="biosWrapperBody mt-5">
+            <div *ngFor="let message of dynamicBiosMessages; let index = index">
+                <p *ngIf="populateBiosIndex >= index" class="is-size--14">
+                    <span>{{message?.text}}</span>
+                    <app-awesome-icon *ngIf="message?.icon" [icon]="['fas', (message?.icon || 'check')]">
+                    </app-awesome-icon>
+                </p>
+            </div>
+        </div>
+        <div class="biosWrapperBlinker mt-4">
+            <p class="blinker is-size-5" *ngIf=" showBlinker">__</p>
+        </div>
+    </div>
+    <div #biosScrollAnchor class="pt-4"></div>
+</div> -->

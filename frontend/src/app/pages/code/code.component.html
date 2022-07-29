@@ -1,0 +1,49 @@
+<div class="wrapper">
+    <section class="wrapperTitle">
+        <h4>Code Snippets</h4>
+    </section>
+
+    <section class="wrapperPosts">
+        <ng-container *ngIf="(codeLinks | json) != '{}'; else showPageLoading">
+            <article *ngFor="let post of codeLinks | keyvalue; let postIndex = index">
+                <div class="wrapperPostsHeader is-flex is-justify-content-space-between">
+                    <h5>{{post?.value?.title}}</h5>
+                </div>
+                <div class="pt-5" *ngIf="requestsLoading['paginate-'+post?.key]?.loading">
+                    <p>
+                        <app-loading-spinner></app-loading-spinner>
+                    </p>
+                </div>
+                <ng-container *ngIf="!requestsLoading['paginate-'+post?.key]?.loading">
+                    <div class="wrapperPostsBody">
+                        <div class="columns is-multiline is-variable is-8">
+                            <div class="column is-half-tablet is-full-mobile pb-5" [ngClass]="{'pt-5': linkIndex >=2 }"
+                                *ngFor="let link of post?.value?.links; let linkIndex = index">
+                                <h5>{{link?.title}}</h5>
+                                <p class="is-size--12">{{1654554197877 | date}}</p>
+                                <div class="is-size--14">
+                                    <p class="mt-2">{{link?.description}}</p>
+                                    <p class="mt-2">
+                                        <a [href]="link?.address" target="_blank" rel="noopener">Browse Code</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapperPostsFooter">
+                        <app-pagination [totalPages]="$any(post?.value?.totalPages)"
+                            [currentPage]="$any(post?.value?.currentPage)" [nextPage]="$any(post?.value?.nextPage)"
+                            [previousPage]="$any(post?.value?.previousPage)"
+                            (paginateClicked)="paginateSnippets($event, $any(post?.key))">
+                        </app-pagination>
+                    </div>
+                </ng-container>
+            </article>
+        </ng-container>
+        <ng-template #showPageLoading>
+            <p>
+                <app-loading-spinner></app-loading-spinner>
+            </p>
+        </ng-template>
+    </section>
+</div>

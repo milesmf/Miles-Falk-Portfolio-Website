@@ -1,0 +1,73 @@
+//
+@import '../../styles/variables.scss';
+
+.signature {
+    font-family: 'Edu TAS Beginner', cursive;
+    font-weight: 500;
+}
+
+.wrapper {
+
+    p {
+        line-height: 2;
+    }
+
+    &Body {
+        margin-top: 45px;
+
+        &Skills {
+            margin-top: 75px;
+
+            >div:not(:first-of-type) {
+                margin-top: 75px;
+            }
+        }
+    }
+
+}
+
+// ABOVE 769px screen size
+@media (min-width: 769px) {
+    .wrapperBodySkills {
+        width: 75% !important;
+    }
+
+    // .icon-title {
+    //     margin-left: 12px;
+    // }
+}
+
+// BELOW 350px screen size
+@media (max-width: 350px) {
+    svg {
+        height: 35px !important;
+        width: 35px !important;
+    }
+}
+
+// // ABOVE 723px screen size
+// @media (min-width: 723px) {
+//     .icon-title {
+//         margin-left: 12px;
+//     }
+// }
+
+// // BELOW 723px screen size
+// @media (max-width: 723px) {
+//     .icon-title {
+//         h5 {
+//             font-size: 0.9rem;
+//         }
+
+//         h6 {
+//             font-size: 0.75rem;
+//         }
+//     }
+// }
+
+// // BELOW 690px screen size
+// @media (max-width: 690px) {
+//     .icon-title {
+//         margin-top: 12px;
+//     }
+// }

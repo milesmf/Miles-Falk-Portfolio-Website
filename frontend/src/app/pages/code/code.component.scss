@@ -1,0 +1,38 @@
+//
+// @import '../../styles/variables.scss';
+
+.wrapper {
+    &Title {}
+
+    &Posts {
+        margin-top: 45px;
+
+        article {
+
+            min-height: 515px;
+
+            &:not(:first-of-type) {
+                margin-top: 65px;
+            }
+
+        }
+
+        &Header {
+            background-color: #eee;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+            padding: 5px 10px;
+        }
+
+        &Body,
+        &Footer {
+            margin-top: 24px;
+        }
+
+        &Footer {
+            border-top: 2px solid #eee;
+            padding-top: 24px;
+        }
+
+    }
+}

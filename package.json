@@ -1,0 +1,21 @@
+{
+    "name": "portfolio_v2",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node ./backend/app/index.js",
+        "build": "cd ./backend && npm install"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/milesmf/portfolio_v2.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/milesmf/portfolio_v2/issues"
+    },
+    "homepage": "https://github.com/milesmf/portfolio_v2#readme"
+}

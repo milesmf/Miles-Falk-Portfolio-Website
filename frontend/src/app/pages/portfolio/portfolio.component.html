@@ -1,0 +1,146 @@
+<div class="modal" [ngClass]=" {'is-active': showModal}">
+    <div class="modal-background is-clickable" (click)="toggleModal()"></div>
+    <div class="modal-content">
+        <div class="modal-header has-text-centered">
+            <label class="label is-size-4">{{portfolioPosts[showModalIndex]?.client}}</label>
+            <!-- <p>
+                <a [href]="portfolioPosts[showModalIndex]?.link" target="_blank"
+                    rel="noopener">{{portfolioPosts[showModalIndex]?.link}}</a>
+            </p> -->
+
+            <p>
+                <a *ngIf="!!portfolioPosts[showModalIndex]?.link; else showPlainTitle"
+                    [href]="portfolioPosts[showModalIndex]?.link" target="_blank" rel="noopener">
+                    <span>Visit Website</span>
+                    <app-awesome-icon [size]="'1x'" [icon]="['fas', 'square-arrow-up-right']">
+                    </app-awesome-icon>
+                </a>
+                <ng-template #showPlainTitle>
+                    <span
+                        [ngClass]="{'has-text-danger': portfolioPosts[showModalIndex]?.launch_status === '[Closed System]'}">{{portfolioPosts[showModalIndex]?.launch_status}}</span>
+                </ng-template>
+            </p>
+
+        </div>
+
+        <div class="modal-body mt-5">
+            <div>
+                <div [innerHTML]="portfolioPosts[showModalIndex]?.body"></div>
+                <div class="mt-6 has-text-centered" *ngIf="portfolioPosts[showModalIndex]?.images?.length">
+                    <h4 class="pb-2" style="border-bottom: 2px solid #eee;">Additional Images</h4>
+                    <div *ngFor="let image of portfolioPosts[showModalIndex]?.images">
+                        <div style="margin: 0 auto; margin-top: 40px" class="post-image large">
+                            <img [src]="image?.imageUrl">
+                        </div>
+                        <div>
+                            <p class="mt-4 is-size--14" style="width: 55ch; margin: 0 auto">{{image?.text}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 has-text-centered">
+                <button class="button is-medium is-light ml-4" (click)="toggleModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper">
+    <section class="wrapperTitle">
+        <h4>Professional Experience</h4>
+    </section>
+
+    <section class="wrapperPosts">
+        <ng-container *ngIf="portfolioPosts?.length; else showPageLoading">
+            <article *ngFor="let post of portfolioPosts; let postIndex = index">
+                <div class="wrapperPostsHeader is-flex is-justify-content-space-between is-size--15">
+                    <p>{{post?.development_status}} {{post?.years}}</p>
+                    <p>
+                        <a *ngIf="!!post?.link; else showPlainTitle" [href]="post?.link" target="_blank" rel="noopener">
+                            <span>Visit Website</span>
+                            <app-awesome-icon [size]="'1x'" [icon]="['fas', 'square-arrow-up-right']">
+                            </app-awesome-icon>
+                        </a>
+                        <ng-template #showPlainTitle>
+                            <span
+                                [ngClass]="{'has-text-danger': post?.launch_status === '[Closed System]'}">{{post?.launch_status}}</span>
+                        </ng-template>
+                    </p>
+                </div>
+                <div class="wrapperPostsBody">
+                    <div class="columns is-variable is-8 is-flex-direction-row-reverse">
+                        <div class="column is-two-fifths">
+                            <div>
+                                <h4>
+                                    <a *ngIf="!!post?.link; else showPostTitle" [href]="post?.link" target="_blank"
+                                        rel="noopener">{{post?.client}}</a>
+                                    <ng-template #showPostTitle>{{post?.client}}</ng-template>
+                                </h4>
+                            </div>
+                            <div class="mt-5">
+                                <h5 class="mb-2 is-hidden-mobile">About</h5>
+                                <p>
+                                    <span>{{$any(post?.preview) | truncateText: 150}}</span>
+                                    <a (click)="toggleModal(postIndex)">
+                                        <span>&nbsp;Read More</span>
+                                        <app-awesome-icon class="ml-2" [size]="'1x'"
+                                            [icon]="['fas', 'long-arrow-alt-right']">
+                                        </app-awesome-icon>
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="mt-5 is-hidden-mobile">
+                                <div>
+                                    <h5>Requirements</h5>
+                                    <ul class="mt-2">
+                                        <li *ngFor="let req of post?.requirements">{{req}}</li>
+                                    </ul>
+                                </div>
+                                <div class="mt-5">
+                                    <h5>Technologies</h5>
+                                    <ul class="technologies-used is-flex is-flex-wrap-wrap is-size--12">
+                                        <li *ngFor="let tech of post?.technologies">{{tech}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-2 is-hidden-tablet">
+                                <div>
+                                    <ul class="technologies-used is-flex is-flex-wrap-wrap is-size--12">
+                                        <li *ngFor="let tech of post?.technologies">{{tech}}</li>
+                                    </ul>
+                                </div>
+                                <div class="mt-5">
+                                    <h5>Requirements</h5>
+                                    <ul class="project-requirements mt-2">
+                                        <li *ngFor="let req of post?.requirements">{{req}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-three-fifths">
+                            <div class="post-image large is-hidden-mobile" (click)="toggleModal(postIndex)">
+                                <img [src]="$any(post?.images)[0]?.imageUrl">
+                            </div>
+                            <div class="is-flex is-flex-wrap-wrap is-justify-content-space-between">
+                                <div class="post-image small is-hidden-tablet" style="margin-top: 26px">
+                                    <img [src]="$any(post?.images)[0]?.imageUrl">
+                                </div>
+                                <ng-container *ngFor="let image of post?.images; let index = index">
+                                    <div class="post-image small" style="margin-top: 26px" *ngIf="!!index"
+                                        (click)="toggleModal(postIndex)">
+                                        <img [src]="image?.imageUrl">
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </ng-container>
+        <ng-template #showPageLoading>
+            <p>
+                <app-loading-spinner></app-loading-spinner>
+            </p>
+        </ng-template>
+    </section>
+</div>
