@@ -1,8 +1,7 @@
 import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { DeviceDetectorService, DeviceInfo } from 'ngx-device-detector';
 import { RouteService } from './services/routes-service.service';
-import { NavigationEnd, Router } from '@angular/router';
-import { filter, Subscription, take, tap } from 'rxjs';
+import { filter, Subscription, take } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { AppStateService } from './app-state.service';
 import { v4 as uuidv4 } from 'uuid';
@@ -69,18 +68,15 @@ export class AppComponent implements OnDestroy {
   constructor(
     private routesService: RouteService,
     private deviceDetectorService: DeviceDetectorService,
-    private router: Router,
     private toastrService: ToastrService,
     private appStateService: AppStateService,
     private liveNotificationService: LiveNotificationService,
     private title: Title,
   ) {
+    this.title.setTitle("Miles Falk");
 
     this.initiateBios();
 
-    this.title.setTitle("Miles Falk");
-
-    //
     this.appStateService.initState();
 
     //Upsert unique client ID
@@ -88,24 +84,14 @@ export class AppComponent implements OnDestroy {
       take(1)
     ).subscribe((user_id: string | undefined) => {
       if (!user_id) {
-        this.appStateService.setState('user_id', uuidv4(), true);
-        console.log("Client assigned user_id")
+        const new_user_id = uuidv4();
+        this.appStateService.setState('user_id', new_user_id, true);
+        console.log(`New client registered: ${new_user_id}`)
       };
 
       //
       this.liveNotificationService.init();
     });
-
-    //
-    this.subscriptions[this.subscriptions?.length] = this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        if (event?.urlAfterRedirects?.startsWith('/portfolio')) this.activeMenuIndex = 0;
-        else if (event?.urlAfterRedirects?.startsWith('/projects')) this.activeMenuIndex = 1;
-        else if (event?.urlAfterRedirects?.startsWith('/code')) this.activeMenuIndex = 2;
-        else if (event?.urlAfterRedirects?.startsWith('/about')) this.activeMenuIndex = 3;
-      }
-    });
-
 
     this.routesService.getBtcUsdPrice().subscribe({
       next: ({ success, data }) => {
@@ -128,11 +114,12 @@ export class AppComponent implements OnDestroy {
     setTimeout(() => {
       this.showBlinker = false;
       this.populateBios();
-    }, 1000 * 1.75)
+    }, 1000 * 1.5)
   }
 
   public populateBios(): void {
     setTimeout(() => {
+      //We DO NOT want populateBiosIndex to be initialized at 0
       if (isNaN(this.populateBiosIndex)) this.populateBiosIndex = 0;
       else this.populateBiosIndex++;
 
@@ -147,7 +134,7 @@ export class AppComponent implements OnDestroy {
           this.biosLoading = false; //Hide bios loading
           document.body.classList.remove("disableBodyScroll"); //Enable scrollbar when bios loading is finished
           window.scrollTo(0, 0); //Reset scroll position
-        }, 1000 * 2.5);
+        }, 1000 * 2);
       }
     }, 100)
   }
@@ -169,7 +156,7 @@ export class AppComponent implements OnDestroy {
       },
       error: (error) => {
         this.toastrService.error('Error retrieving resume!');
-        console.log(error)
+        console.error(error)
       },
       complete: () => {
 

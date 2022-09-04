@@ -14,7 +14,6 @@ import { CodeComponent } from './pages/code/code.component';
 
 //Components
 import { AwesomeIconModule } from './components/awesome-icon/awesome-icon.module';
-import { PaginationComponent } from './components/pagination/pagination.component';
 import { ToastrModule } from 'ngx-toastr';
 import { TruncateTextPipe } from './pipes/truncate-text.pipe';
 import { LoadingSpinnerModule } from './components/loading-spinner/loading-spinner.module';
@@ -24,14 +23,11 @@ const routes: Routes = [
 
   { path: '', redirectTo: 'about', pathMatch: 'full' },
 
-  // { path: 'about', redirectTo: 'about.png' },
   { path: 'about', component: AboutComponent },
 
-  // { path: 'portfolio', redirectTo: 'portfolio.jpg' },
   { path: 'portfolio', component: PortfolioComponent },
 
-  // { path: 'code', redirectTo: 'code.svg' },
-  { path: 'code', component: CodeComponent },
+  { path: 'projects', component: CodeComponent },
 
   { path: '**', redirectTo: 'about' },
 ]
@@ -41,7 +37,6 @@ const routes: Routes = [
     AppComponent,
     PortfolioComponent,
     CodeComponent,
-    PaginationComponent,
     TruncateTextPipe,
     AboutComponent,
   ],

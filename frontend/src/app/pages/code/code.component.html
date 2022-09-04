@@ -1,45 +1,34 @@
 <div class="wrapper">
     <section class="wrapperTitle">
-        <h4>Code Snippets</h4>
+        <h4>Projects</h4>
     </section>
 
-    <section class="wrapperPosts">
-        <ng-container *ngIf="(codeLinks | json) != '{}'; else showPageLoading">
-            <article *ngFor="let post of codeLinks | keyvalue; let postIndex = index">
-                <div class="wrapperPostsHeader is-flex is-justify-content-space-between">
-                    <h5>{{post?.value?.title}}</h5>
-                </div>
-                <div class="pt-5" *ngIf="requestsLoading['paginate-'+post?.key]?.loading">
-                    <p>
-                        <app-loading-spinner></app-loading-spinner>
-                    </p>
-                </div>
-                <ng-container *ngIf="!requestsLoading['paginate-'+post?.key]?.loading">
-                    <div class="wrapperPostsBody">
-                        <div class="columns is-multiline is-variable is-8">
-                            <div class="column is-half-tablet is-full-mobile pb-5" [ngClass]="{'pt-5': linkIndex >=2 }"
-                                *ngFor="let link of post?.value?.links; let linkIndex = index">
-                                <h5>{{link?.title}}</h5>
-                                <p class="is-size--12">{{1654554197877 | date}}</p>
-                                <div class="is-size--14">
-                                    <p class="mt-2">{{link?.description}}</p>
-                                    <p class="mt-2">
-                                        <a [href]="link?.address" target="_blank" rel="noopener">Browse Code</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+    <section class="wrapperProjects">
+        <div class="columns is-mobile is-multiline" *ngIf="!requestsLoading['get-projects']; else showPageLoading">
+            <div class="column is-half-desktop is-full-tablet"
+                *ngFor="let project of projects; let projectIndex = index">
+                <div>
+                    <div>
+                        <h6>
+                            <app-awesome-icon [icon]="projectIcon"></app-awesome-icon>
+                            <a class="is-size--14 ml-1" [href]="project.link" target="_blank"
+                                rel="noopener">{{project.title}}</a>
+                        </h6>
                     </div>
-                    <div class="wrapperPostsFooter">
-                        <app-pagination [totalPages]="$any(post?.value?.totalPages)"
-                            [currentPage]="$any(post?.value?.currentPage)" [nextPage]="$any(post?.value?.nextPage)"
-                            [previousPage]="$any(post?.value?.previousPage)"
-                            (paginateClicked)="paginateSnippets($event, $any(post?.key))">
-                        </app-pagination>
+                    <div class="mt-2 is-size--12" style="height: 85px">
+                        <p>{{project.body}}</p>
                     </div>
-                </ng-container>
-            </article>
-        </ng-container>
+                    <div class="mt-2">
+                        <p class="is-size--12">
+                            <span *ngFor="let tag of project.tags; let lastIndex = last">
+                                <span>{{tag}}</span>
+                                <span class="px-2" *ngIf="!lastIndex">/</span>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <ng-template #showPageLoading>
             <p>
                 <app-loading-spinner></app-loading-spinner>

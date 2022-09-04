@@ -1,0 +1,187 @@
+[
+    {
+        "years": "2022",
+        "development_status": "Completed",
+        "launch_status": "[Coming Soon]",
+        "link": "",
+        "images": [
+            {
+                "imageUrl": "https://res.cloudinary.com/dyaylz9o7/image/upload/v1658423983/Portfolio%20Website/Portfolio/Friends%20of%20Chamber%20Music/homeA_oanef0.png",
+                "text": "The landing page features the next upcoming concert displayed in the header."
+            },
+            {
+                "imageUrl": "https://res.cloudinary.com/dyaylz9o7/image/upload/v1658423982/Portfolio%20Website/Portfolio/Friends%20of%20Chamber%20Music/homeB_kvwgxj.png",
+                "text": "A list of other upcoming concerts also displayed on the landing page."
+            },
+            {
+                "imageUrl": "https://res.cloudinary.com/dyaylz9o7/image/upload/v1658423982/Portfolio%20Website/Portfolio/Friends%20of%20Chamber%20Music/admin_dashboard_jgufyu.png",
+                "text": "Admin CMS dashboard page with quick links to edit page content."
+            },
+            {
+                "imageUrl": "https://res.cloudinary.com/dyaylz9o7/image/upload/v1658424120/Portfolio%20Website/Portfolio/Friends%20of%20Chamber%20Music/admin_concerts_azwhmd.png",
+                "text": "Admin can create new concerts, make changes to existing ones and sort concerts by workflow or season."
+            },
+            {
+                "imageUrl": "https://res.cloudinary.com/dyaylz9o7/image/upload/v1659242252/Portfolio%20Website/Portfolio/Friends%20of%20Chamber%20Music/admin_patrons_jxw6a4.png",
+                "text": "Patrons and donors page to filter donors by traits like Legal Name, Email Address or Transaction ID. Patrons can also be downloaded to an excel file."
+            },
+            {
+                "imageUrl": "https://res.cloudinary.com/dyaylz9o7/image/upload/v1658426162/Portfolio%20Website/Portfolio/Friends%20of%20Chamber%20Music/admin_edit_page_i7sl79.png",
+                "text": "All information pages (About page, Donate page, News page, Covid page, etc) can be updated via the admin portal."
+            }
+        ],
+        "body": "<p>New York&ndash;based Friends of Chamber Music present world-class performances featuring talented groups from around the world. Their new website showcases upcoming concerts, a custom-built checkout system, features for accepting donations, and much more.</p><p>Along with their public website, I also built a CMS application to manage website content; schedule concerts, manage ticket sales & donations, and publish updates to their covid-19 protocols.</p><p>Both the public-facing website and the internal admin CMS are custom-built using MEAN stack technologies. Payments are processed through Stripe and images are stored and processed through Cloudinary.</p>",
+        "client": "Friends of Chamber Music of Troy, NY",
+        "requirements": [
+            "Custom admin CMS",
+            "Payments w/ Stripe",
+            "Images w/ Cloudinary",
+            "Mobile-first design",
+            "Converting wireframes to real pages & features"
+        ],
+        "technologies": [
+            "NodeJS",
+            "Angular",
+            "ExpressJS",
+            "MongoDB",
+            "Mongoose",
+            "RXJS Reactive Javascript"
+        ]
+    },
+    {
+        "years": "2022",
+        "development_status": "Completed",
+        "launch_status": "[Closed System]",
+        "link": "",
+        "images": [
+            {
+                "imageUrl": "https://res.cloudinary.com/dyaylz9o7/image/upload/v1658427426/Portfolio%20Website/Portfolio/quickmanage/signup_hyhjnf.png",
+                "text": "Account creation page with dynamic input fields and form validation."
+            },
+            {
+                "imageUrl": "https://res.cloudinary.com/dyaylz9o7/image/upload/v1658427426/Portfolio%20Website/Portfolio/quickmanage/login_opafuo.png",
+                "text": "Login page created from wireframe concept."
+            },
+            {
+                "imageUrl": "https://res.cloudinary.com/dyaylz9o7/image/upload/v1658428160/Portfolio%20Website/Portfolio/quickmanage/invoices_woulag.png",
+                "text": "Advanced account-invoices overview to sort data with a wide range of filters."
+            },
+            {
+                "imageUrl": "https://res.cloudinary.com/dyaylz9o7/image/upload/v1658428160/Portfolio%20Website/Portfolio/quickmanage/trips_bbztr1.png",
+                "text": "Manage trips (upcoming, in transit, completed, invoiced, closed, imported) and schedule new trips."
+            },
+            {
+                "imageUrl": "https://res.cloudinary.com/dyaylz9o7/image/upload/v1658428349/Portfolio%20Website/Portfolio/quickmanage/carriers_qgu21k.png",
+                "text": "Register new carrier with required information."
+            }
+        ],
+        "body": "<p>My work for QuickManage involved adding features to an existing ReactJs codebase, creating 10+ screens from wireframe concepts and countless reusable components that would be used throughout the application.</p>",
+        "client": "QuickManage, INC",
+        "requirements": [
+            "Integration w/ internal API's",
+            "Mobile-first design",
+            "Converting wireframes to real pages & features",
+            "Working with & maintaining an existing codebase"
+        ],
+        "technologies": [
+            "ReactJS",
+            "Redux"
+        ]
+    },
+    {
+        "years": "2022",
+        "development_status": "Completed",
+        "launch_status": "",
+        "link": "https://www.milesfalk.com",
+        "code": "https://github.com/milesmf/Miles-Falk-Portfolio-Website",
+        "images": [
+            {
+                "imageUrl": "https://res.cloudinary.com/dyaylz9o7/image/upload/v1661273782/Portfolio%20Website/Portfolio/milesfalk/about_dncewr.png",
+                "text": "About me page"
+            },
+            {
+                "imageUrl": "https://res.cloudinary.com/dyaylz9o7/image/upload/v1659278262/Portfolio%20Website/Portfolio/milesfalk/btc_singleton_iso807.png",
+                "text": "Server-side singleton that fetches the price of Bitcoin every 20 seconds and informs all clients."
+            },
+            {
+                "imageUrl": "https://res.cloudinary.com/dyaylz9o7/image/upload/v1658364716/Portfolio%20Website/Portfolio/milesfalk/bios_loading_u49tjm.png",
+                "text": "A bios-loading screen displayed to users at app startup."
+            },
+            {
+                "imageUrl": "https://res.cloudinary.com/dyaylz9o7/image/upload/v1658365195/Portfolio%20Website/Portfolio/milesfalk/btc_trend_diaj2f.png",
+                "text": "The current price of Bitcoin displayed in the site's header includes the last price direction."
+            }
+        ],
+        "body": "<p>I needed my portfolio website to accomplish two things: 1). Allow me to easily publish information about my projects and share links to my Github without needing to integrate with a database or deal with authentication, etc. 2). I wanted to build in a few cool features like the intro bios-loading screen and the live Bitcoin price.</p><p>Upon server startup, two JSON documents are read into memory and accessed with each request to /portfolio or /projects.</p><p>I created the bios-loading screen by placing <i>setTimout()</i> in recursive function calls and incrementing an index value with each execution. I’m then able to show/hide DOM elements by comparing their index to the dynamic index I’ve been incrementing every 100 milliseconds.</p>p>For displaying the live Bitcoin price, I created a singleton (server-side) that queries the current price of Bitcoin every 20 seconds then caches the result and informs all registered clients via a <i>Server Side Event</i> of the new price and which direction the price is moving. Clients are only informed if the new price is !== to the last known price.</p>",
+        "client": "milesfalk.com",
+        "requirements": [
+            "Server Side Events",
+            "Mobile-first design",
+            "Custom pagination",
+            "Images w/ Cloudinary"
+        ],
+        "technologies": [
+            "NodeJS",
+            "Angular",
+            "ExpressJS",
+            "MongoDB",
+            "Mongoose",
+            "RXJS Reactive Javascript"
+        ]
+    },
+    {
+        "years": "2021",
+        "development_status": "Complete",
+        "launch_status": "[Closed System]",
+        "link": "",
+        "images": [
+            {
+                "imageUrl": "https://res.cloudinary.com/dyaylz9o7/image/upload/v1658372069/Portfolio%20Website/Portfolio/MIU%20Resume%20Builder/login_nnblhx.png",
+                "text": "Student and Admin login page interacts internal API's so students/staff can login with existing school credentials."
+            },
+            {
+                "imageUrl": "https://res.cloudinary.com/dyaylz9o7/image/upload/v1658372070/Portfolio%20Website/Portfolio/MIU%20Resume%20Builder/resumes_cmcvuu.png",
+                "text": "Admin can print or edit student resumes or toggle the locked status to prevent students from making changes to their completed resume."
+            },
+            {
+                "imageUrl": "https://res.cloudinary.com/dyaylz9o7/image/upload/v1661280185/Portfolio%20Website/Portfolio/MIU%20Resume%20Builder/step-1_qh9pja.png",
+                "text": "Step 1. Students enter personal information."
+            },
+            {
+                "imageUrl": "https://res.cloudinary.com/dyaylz9o7/image/upload/v1658372069/Portfolio%20Website/Portfolio/MIU%20Resume%20Builder/step-2_kjhvdb.png",
+                "text": "Step 2. Students enter information about their academic projects and any professional experience they may have."
+            },
+            {
+                "imageUrl": "https://res.cloudinary.com/dyaylz9o7/image/upload/v1658372069/Portfolio%20Website/Portfolio/MIU%20Resume%20Builder/step-3_olyzqu.png",
+                "text": "Step 3. Students enter information about their education (where they studied, what they studied, etc)."
+            },
+            {
+                "imageUrl": "https://res.cloudinary.com/dyaylz9o7/image/upload/v1658372070/Portfolio%20Website/Portfolio/MIU%20Resume%20Builder/step-4a_hastum.png",
+                "text": "Step 4A. Students select core skills from a predefined list."
+            },
+            {
+                "imageUrl": "https://res.cloudinary.com/dyaylz9o7/image/upload/v1658372070/Portfolio%20Website/Portfolio/MIU%20Resume%20Builder/step-4b_xyx2vn.png",
+                "text": "Step 4B. Students enter additional personal information (certificates, languages, hobbies)."
+            },
+            {
+                "imageUrl": "https://res.cloudinary.com/dyaylz9o7/image/upload/v1661280362/Portfolio%20Website/Portfolio/MIU%20Resume%20Builder/student-setup_or3b7e.png",
+                "text": "Admin can add new students for each new enrollment cycle."
+            }
+        ],
+        "body": "<p>This application was created so students attending MIU can enter information about their education, work experience, and personal details and then have everything automatically formatted into a professional resume format.<p> <p>Both students and faculty are authenticated with the same credentials they use for other internal MIU applications (an auth request is sent to the university's internal API with the user’s email & password). Once a student is authenticated, they are able to edit or download their single resume. </p> <p>Accounts belonging to faculty are able to edit/browse all student resumes, register new student accounts, and toggle the lock status for students’ resumes. Locked resumes cannot be edited by a student but can be downloaded by either the student who it belongs to or any user authenticated as faculty/staff<p> ",
+        "client": "Maharishi International University",
+        "requirements": [
+            "Custom admin CMS",
+            "Integration w/ internal API's",
+            "PDF generation & formatting"
+        ],
+        "technologies": [
+            "NodeJS",
+            "Angular",
+            "ExpressJS",
+            "MongoDB",
+            "Mongoose",
+            "RXJS Reactive Javascript"
+        ]
+    }
+]

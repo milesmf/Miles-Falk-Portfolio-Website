@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { finalize } from 'rxjs';
 import { RouteService } from 'src/app/services/routes-service.service';
 
 interface IPortfolioPosts {
   years: string;
   link: string;
+  code?: string;
   development_status: string;
   launch_status: string;
   // launched: boolean;
   images: { imageUrl: string; text: string }[],
   body: string;
-  preview: string;
   client: string;
   requirements: string[],
   technologies: string[],
@@ -19,12 +20,13 @@ interface IPortfolioPosts {
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
-  styleUrls: ['./portfolio.component.scss']
+  styleUrls: ['./portfolio.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioComponent {
 
-  public requestsLoading: any = {
-    'load-portfolio': { loading: false, error: false },
+  public requestsLoading: { [request: string]: boolean } = {
+    'get-portfolio': false,
   }
 
   public portfolioPosts: IPortfolioPosts[] = [];
@@ -36,22 +38,17 @@ export class PortfolioComponent {
     private routesService: RouteService,
     private toastrService: ToastrService,
   ) {
-    /*Requests loading*/
-    this.requestsLoading[`load-portfolio`] = { loading: true, error: false };
+    this.requestsLoading['get-portfolio'] = !this.requestsLoading['get-portfolio'];
 
-    this.routesService.getPortfolio().subscribe({
+    this.routesService.getPortfolio().pipe(
+      finalize(() => this.requestsLoading['get-portfolio'] = !this.requestsLoading['get-portfolio'])
+    ).subscribe({
       next: ({ success, data }) => {
         if (success) this.portfolioPosts = data;
-        else this.toastrService.error('Failed to retrieve news posts');
+        else this.toastrError();
       },
       error: () => {
-        /*Requests loading*/
-        this.requestsLoading[`load-portfolio`] = { loading: false, error: true };
-        this.toastrService.error('Failed to retrieve news posts');
-      },
-      complete: () => {
-        /*Requests loading*/
-        this.requestsLoading[`load-portfolio`] = { loading: false, error: false };
+        this.toastrError();
       }
     });
   }
@@ -60,6 +57,10 @@ export class PortfolioComponent {
     this.showModal = !this.showModal;
 
     if (index !== undefined) this.showModalIndex = index;
+  }
+
+  private toastrError(): void {
+    this.toastrService.error('Failed to retrieve portfolio');
   }
 
 }

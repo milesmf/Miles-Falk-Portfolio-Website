@@ -1,0 +1,11 @@
+[
+    {
+        "title": "Word frequency map",
+        "body": "Word frequency map for analyzing the occurrences of words in a text document. Useful for learning new vocabulary from your favorite books, podcasts, etc.",
+        "link": "https://github.com/milesmf/word-frequency-map",
+        "tags": [
+            "Javascript",
+            "Algorithms"
+        ]
+    }
+]

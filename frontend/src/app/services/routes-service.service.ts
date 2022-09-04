@@ -8,7 +8,6 @@ interface IHttpResponse {
     message?: string;
 }
 
-
 @Injectable({ providedIn: 'root' })
 export class RouteService {
 
@@ -24,9 +23,9 @@ export class RouteService {
         return this.httpclient.get<IHttpResponse>(`${SERVER}/portfolio`);
     }
 
-    /*CODE----------------------------------------------------*/
-    public paginateCodeSnippets(page: number, category: string) {
-        return this.httpclient.get<IHttpResponse>(`${SERVER}/code/snippets/?category=${category}&page=${page}`);
+    /*PROJECTS----------------------------------------------------*/
+    public getProjects() {
+        return this.httpclient.get<IHttpResponse>(`${SERVER}/projects`);
     }
 
     /*RESUME----------------------------------------------------*/

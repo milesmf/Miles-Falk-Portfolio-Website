@@ -1,18 +1,14 @@
 import { Component } from '@angular/core';
+import { faFileCode, IconDefinition } from '@fortawesome/free-regular-svg-icons';
 import { ToastrService } from 'ngx-toastr';
+import { finalize } from 'rxjs';
 import { RouteService } from 'src/app/services/routes-service.service';
 
-interface ICodeLinks {
+interface IProject {
   title: string;
-  links: {
-    title: string;
-    description: string;
-    address: string;
-  }[];
-  currentPage: number;
-  totalPages: number;
-  previousPage: number;
-  nextPage: number;
+  body: string;
+  tags: string[];
+  link: string;
 }
 
 @Component({
@@ -22,49 +18,34 @@ interface ICodeLinks {
 })
 export class CodeComponent {
 
-  public requestsLoading: any = {
-    'paginate-angular': { loading: false, error: false },
-    'paginate-nodejs': { loading: false, error: false },
-    'paginate-react': { loading: false, error: false },
+  public requestsLoading: { [request: string]: boolean } = {
+    'get-projects': false,
   }
 
-  public codeLinks: { [category: string]: ICodeLinks } = {};
+  public projects!: IProject[];
+
+  public projectIcon: IconDefinition = faFileCode;
 
   constructor(
     private routesService: RouteService,
     private toastrService: ToastrService,
   ) {
-    //Angular
-    this.paginateSnippets(1, 'angular');
+    this.requestsLoading['get-projects'] = !this.requestsLoading['get-projects'];
 
-    // //NodeJs
-    this.paginateSnippets(1, 'nodejs');
-
-    // //React
-    this.paginateSnippets(1, 'reactjs');
-  }
-
-  //PAGINATE----------------------------------------------------------------------------------------------------------------
-  public paginateSnippets(page: number = 1, category: string): void {
-
-    /*Requests loading*/
-    this.requestsLoading[`paginate-${category}`] = { loading: true, error: false };
-
-    this.routesService.paginateCodeSnippets(page, category).subscribe({
+    this.routesService.getProjects().pipe(
+      finalize(() => this.requestsLoading['get-projects'] = !this.requestsLoading['get-projects'])
+    ).subscribe({
       next: ({ success, data }) => {
-        if (success) this.codeLinks[category] = data;
-        else this.toastrService.error('Failed to retrieve news posts');
+        if (success) this.projects = data;
+        else this.toastrError();
       },
       error: () => {
-        /*Requests loading*/
-        this.requestsLoading[`paginate-${category}`] = { loading: false, error: true };
-        this.toastrService.error('Failed to retrieve news posts');
-      },
-      complete: () => {
-        /*Requests loading*/
-        this.requestsLoading[`paginate-${category}`] = { loading: false, error: false };
+        this.toastrError();
       }
     });
   }
 
+  private toastrError(): void {
+    this.toastrService.error('Failed to retrieve projects');
+  }
 }

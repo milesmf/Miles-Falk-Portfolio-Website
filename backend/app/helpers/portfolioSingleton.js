@@ -11,7 +11,7 @@ class PortfolioSingleton {
         (async () => {
             try {
                 //Parse portfolio
-                this.portfolio_posts = JSON.parse(await readFile(`${__dirname}/../consts/portfolio.json`, "utf8"));
+                this.portfolio_posts = JSON.parse(await readFile(`${__dirname}/../../db/portfolio.json`, "utf8"));
             } catch (error) {
                 throw new Error(error);
             }

@@ -7,24 +7,23 @@ const express = require("express");
 //Helpers
 const BitcoinSingleton = require('../helpers/bitcoinSingleton');
 const PortfolioSingleton = require('../helpers/portfolioSingleton');
-const CodeSnippetSingleton = require('../helpers/codeSnippetsSingleton');
+const ProjectsSingleton = require('../helpers/projectsSingleton');
 const ClientRegistry = require('../helpers/registerClient');
 
 //Router
 const router = express.Router();
 
-//Bitcoin Price
+//Bitcoin price
 router.get('/btc_usd', async (req, res) => {
     try {
-        console.log('route hit')
-        return res.status(201).json({ success: true, data: BitcoinSingleton.getPrice() });
+        return res.status(201).json({ success: true, data: BitcoinSingleton.getPrice });
     } catch (error) {
         console.error(error)
         return res.status(201).json({ success: false });
     }
 });
 
-//Bitcoin Price
+//Register incoming clients to later serve BTC price with SSE
 router.get('/notification', async (req, res) => {
     try {
         await ClientRegistry.register(req.query.user_id, res);
@@ -34,30 +33,26 @@ router.get('/notification', async (req, res) => {
     }
 });
 
-//Load Portfolio
+//Load portfolio
 router.get('/portfolio', async (req, res) => {
     try {
-        setTimeout(() => {
-            return res.status(201).json({
-                success: true,
-                data: PortfolioSingleton.getPortfolio
-            });
-        }, 250);
+        return res.status(201).json({
+            success: true,
+            data: PortfolioSingleton.getPortfolio
+        });
     } catch (error) {
         console.error(error)
         return res.status(201).json({ success: false });
     }
 });
 
-//Paginate Code Snippets
-router.get('/code/snippets', async (req, res) => {
+//Load projects
+router.get('/projects', async (req, res) => {
     try {
-        setTimeout(() => {
-            return res.status(201).json({
-                success: true,
-                data: CodeSnippetSingleton.getCodeSnippetsByPage(req.query.category, req.query.page)
-            });
-        }, 250);
+        return res.status(201).json({
+            success: true,
+            data: ProjectsSingleton.getProjects
+        });
     } catch (error) {
         console.error(error)
         return res.status(201).json({ success: false });

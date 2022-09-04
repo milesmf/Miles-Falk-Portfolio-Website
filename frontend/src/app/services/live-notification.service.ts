@@ -44,7 +44,7 @@ export class LiveNotificationService {
 
         console.log('Live notifications connection dropped');
 
-        console.log(error)
+        console.error(error)
     }
 
     private connect() {

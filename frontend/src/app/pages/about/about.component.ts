@@ -5,16 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss']
 })
-export class AboutComponent implements OnInit {
-
-  public requestsLoading: any = {
-    'load-page': { loading: true, error: false },
-  }
+export class AboutComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-    setTimeout(() => this.requestsLoading[`load-page`] = { loading: false, error: false }, 250);
-  }
 
 }

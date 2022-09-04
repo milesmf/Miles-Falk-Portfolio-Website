@@ -20,19 +20,19 @@
                         <div class="wrapperMenuLinks">
                             <nav>
                                 <ul>
-                                    <li [ngClass]="{'active': activeMenuIndex === 3}" [routerLink]="['/', 'about']">
+                                    <li routerLinkActive="active" [routerLink]="['/', 'about']">
                                         <a>
                                             <h5>About Me</h5>
                                         </a>
                                     </li>
-                                    <li [ngClass]="{'active': activeMenuIndex === 0}" [routerLink]="['/', 'portfolio']">
+                                    <li routerLinkActive="active" [routerLink]="['/', 'portfolio']">
                                         <a>
                                             <h5>Portfolio</h5>
                                         </a>
                                     </li>
-                                    <li [ngClass]="{'active': activeMenuIndex === 2}" [routerLink]="['/', 'code']">
+                                    <li routerLinkActive="active" [routerLink]="['/', 'projects']">
                                         <a>
-                                            <h5>Code Snippets</h5>
+                                            <h5>Projects</h5>
                                         </a>
                                     </li>
                                     <li (click)="downloadResume(true)" class="is-hidden-touch">
@@ -62,10 +62,10 @@
                             </div>
                             <div>
                                 <p>
-                                    <a>Github</a>
+                                    <a href="https://www.github.com/milesmf" target="_blank">Github</a>
                                 </p>
                                 <p>
-                                    <a>Linkedin</a>
+                                    <a href="https://www.linkedin.com/in/milesfalk/" target="_blank">Linkedin</a>
                                 </p>
                                 <p class="is-flex is-flex-wrap-wrap">
                                     <span>mfalk527</span>
@@ -82,7 +82,8 @@
                                 <app-awesome-icon class="has-text-primary" [size]="'1x'"
                                     [icon]="['fas', 'circle-info']">
                                 </app-awesome-icon>
-                                <span class="ml-2 is-size-8">All source code for this website can be found&nbsp;</span>
+                                <span class="ml-2">All source code for this website can be
+                                    found&nbsp;</span>
                                 <a href="https://github.com/milesmf/Miles-Falk-Portfolio-Website" target="_blank"
                                     rel="noopener" class="is-underlined">on my GitHub</a>
                             </p>
@@ -92,7 +93,7 @@
                                 <span class="has-text-weight-semibold">BTC</span>
                                 <span>&nbsp;@</span>
                                 <span *ngIf="!!bitcoinToDollar?.price; else showBTCLoading"
-                                    class="has-text-weight-bold">&nbsp;{{bitcoinToDollar?.price | currency : 'USD' :
+                                    class="has-text-weight-bold">&nbsp;{{bitcoinToDollar.price | currency : 'USD' :
                                     'symbol' : '1.0-0'}}</span>
                                 <ng-template #showBTCLoading>
                                     <span class="ml-2">
@@ -125,7 +126,7 @@
     </div>
 </div>
 
-<!-- <div class="biosWrapper" [ngStyle]="{'visibility': biosLoading ? 'visible' : 'hidden' }">
+<div class="biosWrapper" [ngStyle]="{'visibility': biosLoading ? 'visible' : 'hidden' }">
     <div>
         <div class="biosWrapperHeader">
             <h6>
@@ -147,4 +148,4 @@
         </div>
     </div>
     <div #biosScrollAnchor class="pt-4"></div>
-</div> -->
+</div>

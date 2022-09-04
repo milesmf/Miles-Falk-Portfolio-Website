@@ -33,7 +33,7 @@ class BitcoinSingleton {
     }
 
     //Get current bitcoin price
-    getPrice() {
+    get getPrice() {
         return { price: this.btc_usd_price, trend: this.btc_usd_trend };
     }
 
@@ -48,8 +48,6 @@ class BitcoinSingleton {
             if (this.btc_usd_price !== ticker.close) {
 
                 this.btc_usd_price = ticker.close;
-                // this.btc_usd = ticker.open;
-                // this.btc_usd = ticker.last;
 
                 //Inform all registered clients of BTC/USD price change
                 for (let client in ClientRegistry.clients) {
@@ -59,7 +57,10 @@ class BitcoinSingleton {
             }
 
         } catch (error) {
-            throw new Error(error);
+            console.error(error);
+
+            //
+            setTimeout(async () => await this.fetchBitcoinPrice(), 90_000) //Retry connection after 90 seconds
         }
     }
 
